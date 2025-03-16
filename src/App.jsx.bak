@@ -1,0 +1,128 @@
+import './App.css'
+
+function App() {
+  return (
+    <div className="resume-container">
+      <header className="header">
+        <h1>{"<Developer />"}</h1>
+        <p className="title">Full Stack Developer</p>
+        <div className="contact-info">
+          <p>📧 dev@example.com</p>
+          <p>💻 github.com/dev</p>
+          <p>🔗 linkedin.com/in/dev</p>
+          <p>🌐 dev-portfolio.com</p>
+        </div>
+      </header>
+
+      <section className="summary">
+        <h2>// About</h2>
+        <p>
+          Passionate full-stack developer with a focus on creating elegant solutions 
+          to complex problems. Experienced in modern web technologies and best practices. 
+          Always exploring new technologies and pushing the boundaries of what's possible.
+        </p>
+      </section>
+
+      <section className="tech-stack">
+        <h2>// Tech Stack</h2>
+        <div className="skill-categories">
+          <div className="skill-category">
+            <h3>Languages</h3>
+            <div>
+              <span className="skill-tag">JavaScript</span>
+              <span className="skill-tag">TypeScript</span>
+              <span className="skill-tag">Python</span>
+              <span className="skill-tag">Go</span>
+            </div>
+          </div>
+          <div className="skill-category">
+            <h3>Frontend</h3>
+            <div>
+              <span className="skill-tag">React</span>
+              <span className="skill-tag">Next.js</span>
+              <span className="skill-tag">Tailwind</span>
+              <span className="skill-tag">Redux</span>
+            </div>
+          </div>
+          <div className="skill-category">
+            <h3>Backend</h3>
+            <div>
+              <span className="skill-tag">Node.js</span>
+              <span className="skill-tag">Express</span>
+              <span className="skill-tag">MongoDB</span>
+              <span className="skill-tag">PostgreSQL</span>
+            </div>
+          </div>
+          <div className="skill-category">
+            <h3>DevOps</h3>
+            <div>
+              <span className="skill-tag">Docker</span>
+              <span className="skill-tag">AWS</span>
+              <span className="skill-tag">CI/CD</span>
+              <span className="skill-tag">Git</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="experience">
+        <h2>// Experience</h2>
+        <div className="job">
+          <h3>Senior Full Stack Developer</h3>
+          <p className="company">TechCorp Solutions</p>
+          <p className="period">2023 - Present</p>
+          <ul>
+            <li>Architected and implemented scalable microservices using Node.js and Go</li>
+            <li>Led the migration from monolith to microservices architecture</li>
+            <li>Optimized application performance resulting in 40% faster load times</li>
+          </ul>
+        </div>
+        <div className="job">
+          <h3>Frontend Developer</h3>
+          <p className="company">WebTech Innovations</p>
+          <p className="period">2021 - 2023</p>
+          <ul>
+            <li>Developed responsive web applications using React and Next.js</li>
+            <li>Implemented state management solutions using Redux and Context API</li>
+            <li>Created reusable component libraries and design systems</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="projects">
+        <h2>// Projects</h2>
+        <div className="job">
+          <h3>AI Code Assistant</h3>
+          <p className="company">Open Source Project</p>
+          <p className="period">github.com/dev/ai-code-assistant</p>
+          <ul>
+            <li>Built an AI-powered code completion tool using Python and TensorFlow</li>
+            <li>Implemented real-time code analysis and suggestions</li>
+            <li>1000+ GitHub stars and 200+ active contributors</li>
+          </ul>
+        </div>
+        <div className="job">
+          <h3>Cloud Deploy Dashboard</h3>
+          <p className="company">Personal Project</p>
+          <p className="period">cloud-deploy.dev</p>
+          <ul>
+            <li>Created a deployment monitoring dashboard using React and Node.js</li>
+            <li>Integrated with multiple cloud providers using their APIs</li>
+            <li>Featured in several tech blogs and newsletters</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="education">
+        <h2>// Education</h2>
+        <div className="degree">
+          <h3>Master of Computer Science</h3>
+          <p className="school">Tech University</p>
+          <p className="period">2019 - 2021</p>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+export default App
