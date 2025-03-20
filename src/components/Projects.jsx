@@ -23,25 +23,32 @@ const ProjectCard = ({ title, description, tech, image, link }) => (
 const Projects = () => {
   const projects = [
     {
-      title: 'Personal Portfolio',
-      description: 'A modern, responsive portfolio website showcasing my work and skills. Features smooth animations and a dark theme.',
-      tech: ['React', 'CSS', 'JavaScript'],
-      image: '/project1.jpg',
-      link: '#'
+      title: 'ALEM HABESHA',
+      description: 'A traditional Ethiopian cloth shopping website built with HTML, CSS, and JavaScript. Features a modern, responsive design with easy navigation and product showcase.',
+      tech: ['HTML', 'CSS', 'JavaScript'],
+      image: '/images/Alemhabesha.png',
+      link: 'https://drive.google.com/file/d/1qxFHzqI0nbZ6Z75Z7cWK5CNvukhh-3xf/view?usp=sharing'
     },
     {
-      title: 'E-Learning Platform',
-      description: 'Educational platform designed for interactive learning. Includes user authentication and progress tracking.',
-      tech: ['Laravel', 'MySQL', 'React'],
-      image: '/project2.jpg',
-      link: '#'
+      title: 'TASK SYNC',
+      description: 'A comprehensive classroom management system similar to Google Classroom. Features include assignment management, student tracking, and real-time updates.',
+      tech: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
+      image: '/images/TaskSync.png',
+      link: 'https://drive.google.com/file/d/1rTwvGtK8xMsoGlVtrwdvd0BVvjjrK0ol/view?usp=sharing'
     },
     {
-      title: 'Task Management App',
-      description: 'A collaborative task management tool with real-time updates and team features.',
-      tech: ['React', 'Node.js', 'MongoDB'],
-      image: '/project3.jpg',
-      link: '#'
+      title: 'Weather App',
+      description: 'A real-time weather application that fetches current weather data using API integration. Features include temperature, humidity, and weather conditions display.',
+      tech: ['HTML', 'CSS', 'JavaScript', 'API Integration'],
+      image: '/images/WeatherApp.png',
+      link: 'https://drive.google.com/file/d/1PXzf09fGOBJjDW6_8bHhywqz-f0FRAF3/view?usp=sharing'
+    },
+    {
+      title: 'LeBete',
+      description: 'A modern e-commerce platform for home groceries. Features include product catalog, shopping cart, and secure checkout system.',
+      tech: ['HTML', 'CSS', 'JavaScript'],
+      image: '/images/Lebete.png',
+      link: 'https://drive.google.com/file/d/1r9cQrDEzku1y4DK5XNSYpWRYLdMhjV2x/view?usp=sharing'
     }
   ]
 
