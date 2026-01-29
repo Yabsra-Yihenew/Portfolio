@@ -1,68 +1,96 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --bg: #0f172a;
+  --card: #0b1220;
+  --muted: #93c5fd;
+  --text: #e6eef8;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* custom properties */
+:root {
+  --bg: #0f172a;
+  --card: #0b1220;
+  --muted: #93c5fd;
+  --text: #e6eef8;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* Tailwind temporarily enabled — custom CSS follows */
+html,body,#root { height: 100%; }
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, #071029 0%, #071833 100%);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
 }
+.app { display:flex; align-items:center; justify-content:center; height:100%; }
+.container { max-width:960px; width:100%; padding:48px 24px; margin:auto }
+.hero { text-align:center; margin-bottom:32px }
+.hero h1 { margin:0; font-size:2.4rem }
+.lead { color:var(--muted); margin-top:8px }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px }
+.card { background: rgba(255,255,255,0.02); padding:18px; border-radius:8px; box-shadow: 0 4px 12px rgba(2,6,23,0.6) }
+.card h2 { margin-top:0 }
+.card ul { margin:8px 0 0 18px }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Basic layout styles to replace Tailwind visually (temporary) */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  padding: 18px 0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: transparent;
 }
+nav.scrolled {
+  background: rgba(6,8,15,0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+nav .container { display:flex; justify-content:center; align-items:center; position:relative }
+nav a { color: #9aa6b8; text-decoration:none; margin:0 10px; font-weight:800; font-size:12px; letter-spacing:0.35em }
+nav a:hover { color: #fff }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+.min-h-screen { min-height: 100vh }
+.container { max-width:1100px; margin:0 auto; padding: 0 24px }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+/* Hero */
+section.relative { padding-top: 120px; padding-bottom: 64px }
+.hero-heading { font-weight:900; color:#fff; margin:0 0 18px 0 }
+.hero-heading .gradient { background: linear-gradient(90deg,#60a5fa,#7c3aed,#60a5fa); -webkit-background-clip: text; color: transparent }
+.lead { color: #9ca3af }
+.cta { display:inline-block; padding:14px 28px; border-radius:20px; font-weight:900; text-transform:uppercase; margin-right:12px }
+.cta.primary { background:#fff; color:#000 }
+.cta.secondary { background:transparent; border:1px solid rgba(255,255,255,0.08); color:#fff }
+
+/* Grid & cards */
+.grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap:18px }
+.grid > div { background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); padding:20px; border-radius:18px; color:#e6eef8 }
+
+/* Typography */
+h1 { font-size:48px; line-height:0.95; margin:0 0 12px }
+h2 { font-size:20px; color:#cbd5e1 }
+p { color:#9aa6b8 }
+
+/* Footer */
+footer { padding:56px 0; text-align:center; border-top:1px solid rgba(255,255,255,0.04) }
+
+/* Modal basics */
+.modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,0.8); display:flex; align-items:center; justify-content:center }
+.modal { background:#0d0d0f; border-radius:24px; padding:24px; max-width:960px; width:100%; color:#e6eef8 }
+
+/* Small helpers */
+.inline-flex { display:inline-flex; align-items:center }
+.rounded-full { border-radius:9999px }
+.rounded-2xl { border-radius:16px }
+.rounded-3xl { border-radius:24px }
+.uppercase { text-transform:uppercase }
+.text-white { color:#fff }
+
+

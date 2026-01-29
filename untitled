@@ -306,7 +306,7 @@ export default function App() {
             </h2>
             
             <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-3xl leading-relaxed font-medium">
-              I am a technology-driven entrepreneur and the founder of <span className="text-white border-b border-blue-500/50 hover:text-blue-400 cursor-pointer transition-colors"><a href="https://ewnetsolutions.netlify.app/" target="_blank" rel="noopener noreferrer">Ewnet Solutions</a> </span>. 
+              I am a technology-driven entrepreneur and the founder of <span className="text-white border-b border-blue-500/50 hover:text-blue-400 cursor-pointer transition-colors">Ewnet Solutions</span>. 
               I design and build digital products that combine engineering excellence with strategic business value.
             </p>
 
@@ -327,8 +327,7 @@ export default function App() {
       <section id="about" className="py-32 bg-[#0d0d0f] relative overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div className="lg:col-span-2 pl-6 md:pl-12 lg:pl-20">
-                <br />
+            <div className="relative">
               <SectionHeading title="Engineering Excellence & Strategic Vision" subtitle="Identity" />
               <div className="space-y-6 text-lg text-gray-400 leading-relaxed font-medium">
                 <p>
@@ -341,8 +340,8 @@ export default function App() {
                   I approach technology not just as code, but as a catalyst for building global businesses and enabling smarter growth.
                 </p>
                 
-                <div className="grid sm:grid-cols-2 gap-8 pt-8">
-                  <div className="p-12 md:p-16 rounded-3xl bg-white/5 border border-white/10 min-h-[300px]">
+                <div className="grid sm:grid-cols-2 gap-6 pt-8">
+                  <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
                     <GraduationCap className="text-blue-500 mb-4" size={24} />
                     <h5 className="text-white font-bold mb-3">Education</h5>
                     <div className="space-y-3">
@@ -356,7 +355,7 @@ export default function App() {
                       </div>
                     </div>
                   </div>
-                  <div className="p-12 md:p-16 rounded-3xl bg-white/5 border border-white/10 min-h-[300px]">
+                  <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
                     <Award className="text-blue-500 mb-4" size={24} />
                     <h5 className="text-white font-bold mb-3">Key Experience</h5>
                     <ul className="text-xs text-gray-400 space-y-3">
@@ -381,23 +380,19 @@ export default function App() {
                 </div>
               </div>
             </div>
-
-          </div>
-        </div>
-
-          {/* Quote card placed under Identity section (full-width) */}
-          <div className="mt-10 w-full">
-            <div className="container mx-auto px-6">
-              <div className="p-10 md:p-14 rounded-[40px] bg-gradient-to-br from-blue-600/10 to-transparent border border-white/5 backdrop-blur-sm relative group overflow-hidden shadow-2xl max-w-4xl mx-auto w-full">
+            
+            <div className="relative lg:pt-24">
+              <div className="p-10 md:p-14 rounded-[40px] bg-gradient-to-br from-blue-600/10 to-transparent border border-white/5 backdrop-blur-sm relative group overflow-hidden shadow-2xl">
                 <div className="absolute top-0 right-0 p-8 text-blue-500 opacity-10 group-hover:opacity-20 transition-opacity">
                   <Cpu size={120} />
                 </div>
-                <blockquote className="text-2xl md:text-3xl font-bold text-white leading-tight tracking-tight relative z-10 italic text-center">
+                <blockquote className="text-2xl md:text-3xl font-bold text-white leading-tight tracking-tight relative z-10 italic">
                   "I build the bridge between great ideas and the technology that makes them real."
                 </blockquote>
               </div>
             </div>
           </div>
+        </div>
       </section>
 
       {/* Focus Areas */}
