@@ -25,10 +25,10 @@ import {
 } from 'lucide-react';
 
 import EwnetSolutionLogo from '../images/EwnetSolutionLogo.png';
-import EwnetS1 from '../images/EwnetS1.png';
-import EwnetS2 from '../images/EwnetS2.png';
-import EwnetS3 from '../images/EwnetS3.png';
-import Bens from '../images/Bens.png';
+import EwnetS1 from '/images/EwnetS1.png';
+import EwnetS2 from '/images/EwnetS2.png';
+import EwnetS3 from '/images/EwnetS3.png';
+import Bens from '/images/Bens.png';
 import Bensp from '../images/Bensp.png';
 import Telemedicine from '../images/Telemedicine.png';
 import Yesi from '../images/Yesi.png';
