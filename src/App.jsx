@@ -5,6 +5,7 @@ import {
   Mail, 
   Linkedin, 
   Phone, 
+  Github,
   MessageSquare, 
   Cpu, 
   Layers, 
@@ -19,6 +20,7 @@ import {
   Code,
   LineChart,
   X,
+  ArrowUp,
   Image as ImageIcon
 } from 'lucide-react';
 
@@ -56,10 +58,10 @@ const Nav = () => {
 
   return (
     <nav className={`fixed top-0 w-full z-40 transition-all duration-500 ${
-      scrolled ? 'bg-[#0a0a0b]/90 backdrop-blur-xl border-b border-white/5 py-4 shadow-2xl' : 'bg-transparent py-8'
+      scrolled ? 'bg-[#0a0a0b]/90 backdrop-blur-xl border-b border-white/5 py-3 shadow-2xl' : 'bg-transparent py-6'
     }`}>
       <div className="container mx-auto px-6 flex justify-center items-center relative">
-        <div className="flex items-center space-x-10 md:space-x-14 text-[10px] md:text-[11px] font-black uppercase tracking-[0.4em] text-gray-400">
+        <div className="flex items-center space-x-6 md:space-x-14 text-[9px] md:text-[11px] font-black uppercase tracking-[0.2em] md:tracking-[0.4em] text-gray-400">
           {['About', 'Focus', 'Portfolio', 'Vision'].map((item) => (
             <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-white transition-all duration-300 cursor-pointer relative group py-1">
               <span className="relative z-10">{item}</span>
@@ -69,7 +71,7 @@ const Nav = () => {
         </div>
         
         <div className="absolute right-6 hidden lg:block">
-          <a href="#contact" className="bg-white/5 hover:bg-white text-white hover:text-black border border-white/10 px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500">
+          <a href="#contact" className="bg-white/5 hover:bg-white text-white hover:text-black border border-white/10 px-5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500">
             Contact
           </a>
         </div>
@@ -88,7 +90,7 @@ const SectionHeading = ({ title, subtitle, centered = false }) => {
       } ${centered ? 'text-center' : ''}`}
     >
       <h2 className="text-xs font-black tracking-[0.5em] uppercase text-blue-500 mb-4">{subtitle}</h2>
-      <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tighter leading-tight">{title}</h3>
+      <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tighter leading-tight">{title}</h3>
     </div>
   );
 };
@@ -115,6 +117,25 @@ const FocusCard = ({ icon: Icon, title, description, delay = 0 }) => {
 };
 
 const Modal = ({ isOpen, onClose, project }) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = project ? [
+    project.modalImage || project.image,
+    ...(project.detailImages || [])
+  ].filter(Boolean) : [];
+
+  useEffect(() => {
+    if (isOpen) setCurrentSlide(0);
+  }, [isOpen, project]);
+
+  useEffect(() => {
+    if (!isOpen || slides.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [isOpen, slides.length]);
+
   if (!isOpen || !project) return null;
 
   return (
@@ -132,86 +153,100 @@ const Modal = ({ isOpen, onClose, project }) => {
           <X size={24} />
         </button>
         
-        <div className="p-8 md:p-16">
-          <div className="flex flex-col md:flex-row gap-12">
-            <div className="md:w-2/3">
+        <div className="p-6 md:p-16">
+          <div className="max-w-4xl mx-auto">
+            <div>
               <div className="inline-flex items-center space-x-2 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
                 <span className="text-[10px] font-black uppercase tracking-widest text-blue-500">{project.type}</span>
               </div>
               
-              <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tighter">{project.name}</h2>
+              <h2 className="text-3xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tighter">{project.name}</h2>
               
               <div className="space-y-8">
-                <p className="text-xl text-gray-400 leading-relaxed font-medium">
+                <p className="text-base md:text-xl text-gray-400 leading-relaxed font-medium">
                   {project.longDesc || project.desc}
                 </p>
                 
                 {/* Project Image Section */}
-                <div className="rounded-3xl overflow-hidden border border-white/10 bg-white/5 aspect-video relative group">
-                    <img 
-                        src={project.image} 
-                        alt={project.name} 
-                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="rounded-2xl overflow-hidden border border-white/10 aspect-square">
-                        <img src={`https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800`} className="w-full h-full object-cover opacity-50 hover:opacity-100 transition-all cursor-zoom-in" alt="Detail 1"/>
-                    </div>
-                    <div className="rounded-2xl overflow-hidden border border-white/10 aspect-square">
-                        <img src={`https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800`} className="w-full h-full object-cover opacity-50 hover:opacity-100 transition-all cursor-zoom-in" alt="Detail 2"/>
-                    </div>
+                <div className="rounded-3xl overflow-hidden border border-white/10 bg-white/5 aspect-[4/3] md:aspect-video relative group mt-8">
+                    {slides.map((slide, index) => (
+                      <div 
+                        key={index}
+                        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                          index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                        }`}
+                      >
+                        <img 
+                            src={slide} 
+                            alt={`${project.name} slide ${index + 1}`} 
+                            className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      </div>
+                    ))}
+                    
+                    {/* Slider Indicators */}
+                    {slides.length > 1 && (
+                      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+                        {slides.map((_, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => setCurrentSlide(idx)}
+                            className={`h-1.5 rounded-full transition-all duration-300 ${
+                              idx === currentSlide ? 'bg-blue-500 w-8' : 'bg-white/30 w-2 hover:bg-white'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    )}
                 </div>
               </div>
             </div>
             
-            <div className="md:w-1/3 space-y-8">
-              {/* Impact Section */}
-              <div className="p-8 rounded-3xl bg-blue-500/5 border border-blue-500/10 space-y-6">
-                <h4 className="text-xs font-black uppercase tracking-[0.3em] text-blue-500">Impact & Results</h4>
-                
-                <div className="space-y-4">
-                    <div>
-                        <div className="text-3xl font-black text-white">{project.impactTitle || "Unified Brand Voice"}</div>
-                        <p className="text-sm text-gray-400 mt-2">{project.impactDesc || "System reliability improved through automated workflows."}</p>
-                    </div>
-                    <div className="h-px bg-white/10" />
-                    <div>
-                        <div className="text-sm font-bold text-white">Project Reach</div>
-                        <div className="text-xl font-black text-blue-400 mt-1">{project.impactStat || "Global scale readiness"}</div>
-                    </div>
-                </div>
-              </div>
-
-              <div className="p-8 rounded-3xl bg-white/5 border border-white/5 space-y-6">
-                <h4 className="text-[10px] font-black uppercase tracking-widest text-gray-500">Stack</h4>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech?.map((t, idx) => (
-                    <span key={idx} className="px-3 py-1.5 bg-white/5 rounded-lg text-[10px] font-bold text-gray-300 uppercase tracking-tighter border border-white/5">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              
-              {project.link && (
+            {project.link && (
+              <div className="mt-10">
                 <a 
                   href={project.link} 
                   target="_blank" 
-                  className="flex items-center justify-between w-full px-8 py-5 bg-white text-black font-black rounded-[24px] transition-all transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-white/10 group"
+                  className="inline-flex items-center space-x-4 px-10 py-5 bg-white text-black font-black rounded-[24px] transition-all transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-white/10 group"
                 >
                   <span className="uppercase tracking-widest text-xs">Launch Site</span>
                   <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </a>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
     </div>
+  );
+};
+
+const ScrollToTop = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      setIsVisible(window.scrollY > 500);
+    };
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <button
+      onClick={scrollToTop}
+      className={`fixed bottom-8 right-8 z-40 p-3 bg-white/5 backdrop-blur-md border border-blue-500/50 text-white rounded-full shadow-2xl hover:bg-white/20 transition-all duration-500 transform hover:-translate-y-1 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
+      }`}
+    >
+      <ArrowUp size={20} />
+    </button>
   );
 };
 
@@ -231,44 +266,52 @@ export default function App() {
       desc: "The central hub for our technology-driven ecosystem, focusing on agile delivery and client scaling.",
       longDesc: "Ewnet Solutions serves as the primary gateway for digital transformation. This platform integrates complex client requirements with streamlined development workflows, ensuring that every solution delivered is both technically sound and business-aligned.",
       link: "https://ewnetsolutions.netlify.app",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1600",
+      image: "/images/EwnetSolutionLogo.png",
+      modalImage: "/images/EwnetS1.png",
+      detailImages: ["/images/EwnetS2.png", "/images/EwnetS3.png"],
       tech: ["Next.js", "Tailwind CSS", "Cloud Architecture", "CI/CD"],
       impactTitle: "Global Scalability",
       impactDesc: "Infrastructure engineered for high-availability and zero-downtime deployment cycles.",
       impactStat: "99.9% Uptime"
     },
     { 
-      name: "Intelligent Supply", 
-      type: "Product Engineering", 
-      desc: "An AI-enhanced dashboard for predictive inventory management and logistics optimization.",
-      longDesc: "A data-intensive application designed to provide real-time visibility into complex supply chains. By leveraging machine learning models, the system predicts stockouts and suggests optimal reorder points.",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1600",
-      tech: ["Python", "TensorFlow", "React", "GraphQL"],
-      impactTitle: "Unified Brand Voice",
-      impactDesc: "System reliability improved through automated workflows and predictive analytics.",
-      impactStat: "30% Efficiency Gain"
+      name: "Business Documentation", 
+      type: "Strategic Services", 
+      desc: "Professional business profiles and strategic proposals designed to secure partnerships.",
+      longDesc: "We craft high-impact business documentation that communicates value clearly and persuasively. From comprehensive company profiles to detailed project proposals, our documents are designed to align with industry standards and help businesses secure critical opportunities.",
+      image: "/images/Bens.png",
+      modalImage: "/images/Bens.png",
+      detailImages: ["/images/Bensp.png", "/images/Telemedicine.png", "/images/Yesi.png"],
+      tech: ["Adobe InDesign", "Copywriting", "Strategic Planning", "Branding"],
+      impactTitle: "Strategic Growth",
+      impactDesc: "Facilitating partnerships through clear, professional communication.",
+      impactStat: "High Conversion"
     },
     { 
-      name: "Digital Brand System", 
-      type: "Graphic Design", 
-      desc: "A comprehensive visual system for tech startups focusing on minimal and modern aesthetics.",
-      longDesc: "Focused on creating a unified visual language across web, mobile, and print. This project involved deep color theory analysis and custom typography to establish market authority for emerging tech ventures.",
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=1600",
-      tech: ["Adobe Suite", "Figma", "Branding Strategy"],
-      impactTitle: "Unified Brand Voice",
-      impactDesc: "Achieved seamless consistency across all touchpoints, from print to high-fidelity digital interfaces.",
-      impactStat: "100% Brand Recall"
+      name: "Website Development", 
+      type: "Web Engineering", 
+      desc: "Scalable digital platforms engineered for performance, accessibility, and long-term growth.",
+      longDesc: "We don't just build websites; we build digital assets. By combining clean code with strategic design, we create fast, secure, and scalable web platforms that drive user engagement and business growth.",
+      image: "/images/Tech1.png",
+      modalImage: "/images/Tech1.png",
+      detailImages: ["/images/Tech2.png", "/images/Tech3.png", "/images/Tech4.png"],
+      tech: ["React", "Next.js", "Tailwind", "Node.js"],
+      impactTitle: "Digital Impact",
+      impactDesc: "Enhanced online visibility and user engagement through performance-first engineering.",
+      impactStat: "Fast Load Times"
     },
     { 
-      name: "Strategic Portal", 
-      type: "Business Development", 
-      desc: "A tool for generating business proposals and managing stakeholder development cycles.",
-      longDesc: "This portal automates the creation of high-impact business proposals and company profiles, allowing the team to focus on strategic relationships rather than administrative overhead.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600",
-      tech: ["Automation", "React", "Cloud Storage", "PDF-Lib"],
-      impactTitle: "System reliability",
-      impactDesc: "Reliability improved through automated documentation workflows and real-time collaboration tools.",
-      impactStat: "50% Faster Closing"
+      name: "UI Design & Graphics", 
+      type: "Creative Design", 
+      desc: "Compelling visual narratives and intuitive interfaces that elevate brand presence.",
+      longDesc: "Design is the silent ambassador of your brand. We craft pixel-perfect user interfaces and comprehensive graphic assets—from logos to marketing collateral—that ensure your digital presence is not only functional but unforgettable.",
+      image: "/images/ui1.png",
+      modalImage: "/images/ui1.png",
+      detailImages: ["/images/ui2.png", "/images/Alemhabesha.png", "/images/3.png", "/images/4.png", "/images/cover.png", "/images/nova.png"],
+      tech: ["Figma", "Photoshop", "Illustrator", "Brand Identity"],
+      impactTitle: "Visual Impact",
+      impactDesc: "Enhanced user engagement through consistent and accessible design systems.",
+      impactStat: "High Retention"
     }
   ];
 
@@ -296,16 +339,16 @@ export default function App() {
               <span className="text-[10px] uppercase tracking-[0.4em] font-black text-white">Technology Entrepreneur · Product Builder</span>
             </div>
             
-            <h1 className="text-5xl md:text-9xl font-black text-white tracking-tighter mb-8 leading-[0.85] uppercase">
+            <h1 className="text-5xl md:text-9xl font-black text-white tracking-tighter mb-8 leading-[0.9] md:leading-[0.85] uppercase">
               Yabsra <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-600">Yihenew.</span>
             </h1>
 
-            <h2 className="text-2xl md:text-4xl font-bold text-gray-200 mb-8 tracking-tight">
+            <h2 className="text-xl md:text-4xl font-bold text-gray-200 mb-8 tracking-tight">
               Building Technology for Real Business Impact.
             </h2>
             
-            <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-3xl leading-relaxed font-medium">
+            <p className="text-base md:text-xl text-gray-400 mb-10 max-w-3xl leading-relaxed font-medium">
               I am a technology-driven entrepreneur and the founder of <span className="text-white border-b border-blue-500/50 hover:text-blue-400 cursor-pointer transition-colors"><a href="https://ewnetsolutions.netlify.app/" target="_blank" rel="noopener noreferrer">Ewnet Solutions</a> </span>. 
               I design and build digital products that combine engineering excellence with strategic business value.
             </p>
@@ -329,20 +372,23 @@ export default function App() {
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className="lg:col-span-2 pl-6 md:pl-12 lg:pl-20">
                 <br />
-              <SectionHeading title="Engineering Excellence & Strategic Vision" subtitle="Identity" />
-              <div className="space-y-6 text-lg text-gray-400 leading-relaxed font-medium">
+              <SectionHeading title="Engineering Excellence & Strategic Vision" subtitle="About Me" />
+              <div className="space-y-6 text-base md:text-lg text-gray-400 leading-relaxed font-medium">
                 <p>
-                  I am <span className="text-white">Yabsra Yihenew</span>, a technology-driven entrepreneur dedicated to the intersection of digital infrastructure and business scaling.
+                  I’m <span className="text-white">Yabsra Yihenew</span>, a curious builder who believes progress comes from understanding many things, not just one.
                 </p>
                 <p>
-                  As the <strong className="text-white">Founder of Ewnet Solutions</strong>, my focus is on building digital products and systems that solve real-world problems, scale efficiently, and create measurable value.
+                  I’m driven by impact. I enjoy learning how systems work people, businesses, technology, and ideas and connecting them to solve real problems. I don’t limit myself to one field; I think across disciplines, because the best solutions often live between them.
                 </p>
                 <p>
-                  I approach technology not just as code, but as a catalyst for building global businesses and enabling smarter growth.
+                  I see problems as opportunities. I like breaking complexity into clarity, turning ideas into action, and helping others see what’s possible. Whether it’s strategy, systems, design, or execution, I focus on creating work that makes sense, lasts, and matters.
+                </p>
+                <p>
+                  My vision is simple: <span className="text-white">build meaningful solutions, inspire others to think bigger, and leave things better than I found them.</span>
                 </p>
                 
                 <div className="grid sm:grid-cols-2 gap-8 pt-8">
-                  <div className="p-12 md:p-16 rounded-3xl bg-white/5 border border-white/10 min-h-[300px]">
+                  <div className="p-8 md:p-16 rounded-3xl bg-white/5 border border-white/10 min-h-[300px]">
                     <GraduationCap className="text-blue-500 mb-4" size={24} />
                     <h5 className="text-white font-bold mb-3">Education</h5>
                     <div className="space-y-3">
@@ -356,7 +402,7 @@ export default function App() {
                       </div>
                     </div>
                   </div>
-                  <div className="p-12 md:p-16 rounded-3xl bg-white/5 border border-white/10 min-h-[300px]">
+                  <div className="p-8 md:p-16 rounded-3xl bg-white/5 border border-white/10 min-h-[300px]">
                     <Award className="text-blue-500 mb-4" size={24} />
                     <h5 className="text-white font-bold mb-3">Key Experience</h5>
                     <ul className="text-xs text-gray-400 space-y-3">
@@ -460,7 +506,7 @@ export default function App() {
                   </div>
 
                   {/* Card Content */}
-                  <div className="relative z-10 p-12 flex flex-col h-full">
+                  <div className="relative z-10 p-8 md:p-12 flex flex-col h-full">
                     <div className="flex justify-between items-start mb-16">
                       <span className="text-[10px] font-black uppercase tracking-[0.4em] text-blue-500 px-4 py-1.5 bg-blue-500/10 backdrop-blur-md border border-blue-500/20 rounded-full">{proj.type}</span>
                       <div className="p-3 bg-white/5 border border-white/10 rounded-2xl group-hover:bg-blue-500 group-hover:text-white transition-all duration-500">
@@ -468,8 +514,8 @@ export default function App() {
                       </div>
                     </div>
                     
-                    <h4 className="text-4xl font-black text-white mb-6 group-hover:text-blue-400 transition-colors tracking-tighter">{proj.name}</h4>
-                    <p className="text-gray-400 text-lg mb-12 leading-relaxed max-w-sm line-clamp-2">{proj.desc}</p>
+                    <h4 className="text-3xl md:text-4xl font-black text-white mb-6 group-hover:text-blue-400 transition-colors tracking-tighter">{proj.name}</h4>
+                    <p className="text-gray-400 text-base md:text-lg mb-12 leading-relaxed max-w-sm line-clamp-2">{proj.desc}</p>
                     
                     <div className="mt-auto pt-8 border-t border-white/5 flex items-center justify-between">
                       <div className="text-xs font-black uppercase tracking-[0.4em] text-gray-500 group-hover:text-white transition-colors">
@@ -497,12 +543,12 @@ export default function App() {
           <Rocket className="text-blue-500 mx-auto mb-8 animate-bounce" size={48} />
           <SectionHeading title="The Long Game" subtitle="Vision" centered />
           <div className="max-w-3xl mx-auto space-y-8">
-            <p className="text-2xl text-gray-400 font-medium leading-relaxed italic">
-              "My journey as the founder of Ewnet Solutions is a commitment to building technology-driven businesses that operate globally and create lasting impact."
+            <p className="text-xl md:text-2xl text-gray-400 font-medium leading-relaxed italic">
+              "My ambition is to build with purpose and think beyond one discipline, creating clarity today while shaping long-term impact for people, businesses, and communities."
             </p>
             <div className="flex justify-center items-center space-x-6">
               <div className="h-px flex-1 bg-white/10" />
-              <div className="text-white font-black uppercase tracking-[0.3em] text-[10px]">Scale · Empower · Impact</div>
+              <div className="text-white font-black uppercase tracking-[0.3em] text-[10px]">Build · Scale · Impact</div>
               <div className="h-px flex-1 bg-white/10" />
             </div>
           </div>
@@ -513,13 +559,13 @@ export default function App() {
       <footer id="contact" className="py-32 border-t border-white/5 bg-gradient-to-b from-transparent to-blue-500/10">
         <div className="container mx-auto px-6 text-center">
           <SectionHeading title="Let's Build Something" subtitle="Contact" centered />
-          <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-medium">
+          <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-medium">
             Open to strategic partnerships, global collaborations, and ambitious ventures.
           </p>
           
           <div className="flex flex-col items-center space-y-10 mb-24">
             <a 
-              href="mailto:yabsrayihenew@example.com" 
+              href="mailto:yabsrayabsra2222@gmail.com" 
               className="group flex items-center space-x-4 px-12 py-5 bg-white text-black font-black rounded-3xl hover:bg-blue-600 hover:text-white transition-all transform hover:-translate-y-2 shadow-2xl shadow-blue-500/20 uppercase tracking-[0.2em] text-sm"
             >
               <Mail size={24} />
@@ -528,11 +574,19 @@ export default function App() {
 
             <div className="flex items-center space-x-10">
               {[
-                { icon: Linkedin, label: "LinkedIn" },
-                { icon: Phone, label: "Call" },
-                { icon: MessageSquare, label: "WhatsApp" }
+                { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/yabsra-yihenew-07ab96174/" },
+                { icon: Github, label: "GitHub", href: "https://github.com/Yabsra-Yihenew" },
+                { icon: Phone, label: "Call", href: "tel:0911365411" },
+                { icon: MessageSquare, label: "WhatsApp", href: "https://wa.me/qr/MQTNL2XXYSYNC1" }
               ].map((item, i) => (
-                <a key={i} href="#" className="text-gray-500 hover:text-blue-500 transition-all transform hover:scale-125" title={item.label}>
+                <a 
+                  key={i} 
+                  href={item.href} 
+                  target={item.label === "Call" ? undefined : "_blank"}
+                  rel={item.label === "Call" ? undefined : "noopener noreferrer"}
+                  className="text-gray-500 hover:text-blue-500 transition-all transform hover:scale-125" 
+                  title={item.label}
+                >
                   <item.icon size={20} />
                 </a>
               ))}
@@ -540,6 +594,20 @@ export default function App() {
           </div>
 
           <div className="space-y-4 pt-8 border-t border-white/5">
+            <div className="flex flex-col items-center space-y-4 text-gray-400 font-medium pb-6">
+              <div className="flex items-center space-x-3">
+                <Mail size={18} className="text-blue-500" />
+                <span>yabsrayabsra2222@gmail.com</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Phone size={18} className="text-blue-500" />
+                <span>0911365411</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Linkedin size={18} className="text-blue-500" />
+                <span>Yabsra Yihenew</span>
+              </div>
+            </div>
             <div className="text-[11px] uppercase tracking-[0.5em] text-gray-500 font-black">
               &copy; 2026 
             </div>
@@ -556,6 +624,8 @@ export default function App() {
         onClose={() => setIsModalOpen(false)} 
         project={selectedProject} 
       />
+      
+      <ScrollToTop />
     </div>
   );
 }
