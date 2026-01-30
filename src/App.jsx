@@ -32,17 +32,17 @@ import Bens from '/Images/Bens.png';
 import Bensp from '/Images/Bensp.png';
 import Telemedicine from '/Images/Telemedicine.png';
 import Yesi from '/Images/Yesi.png';
-import Tech1 from '../images/Tech1.png';
-import Tech2 from '../images/Tech2.png';
-import Tech3 from '../images/Tech3.png';
-import Tech4 from '../images/Tech4.png';
-import ui1 from '../images/ui1.png';
-import ui2 from '../images/ui2.png';
-import Alemhabesha from '../images/Alemhabesha.png';
-import Img3 from '../images/3.png';
-import Img4 from '../images/4.png';
-import cover from '../images/cover.png';
-import nova from '../images/nova.png';
+import Tech1 from '/Images/Tech1.png';
+import Tech2 from '/Images/Tech2.png';
+import Tech3 from '/Images/Tech3.png';
+import Tech4 from '/Images/Tech4.png';
+import ui1 from '/Images/ui1.png';
+import ui2 from '/Images/ui2.png';
+import Alemhabesha from '/Images/Alemhabesha.png';
+import Img3 from '/Images/3.png';
+import Img4 from '/Images/4.png';
+import cover from '/Images/cover.png';
+import nova from '/Images/nova.png';
 
 // --- Animation Hook ---
 const useScrollReveal = () => {
