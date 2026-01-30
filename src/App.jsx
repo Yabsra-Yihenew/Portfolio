@@ -24,6 +24,26 @@ import {
   Image as ImageIcon
 } from 'lucide-react';
 
+import EwnetSolutionLogo from '../images/EwnetSolutionLogo.png';
+import EwnetS1 from '../images/EwnetS1.png';
+import EwnetS2 from '../images/EwnetS2.png';
+import EwnetS3 from '../images/EwnetS3.png';
+import Bens from '../images/Bens.png';
+import Bensp from '../images/Bensp.png';
+import Telemedicine from '../images/Telemedicine.png';
+import Yesi from '../images/Yesi.png';
+import Tech1 from '../images/Tech1.png';
+import Tech2 from '../images/Tech2.png';
+import Tech3 from '../images/Tech3.png';
+import Tech4 from '../images/Tech4.png';
+import ui1 from '../images/ui1.png';
+import ui2 from '../images/ui2.png';
+import Alemhabesha from '../images/Alemhabesha.png';
+import Img3 from '../images/3.png';
+import Img4 from '../images/4.png';
+import cover from '../images/cover.png';
+import nova from '../images/nova.png';
+
 // --- Animation Hook ---
 const useScrollReveal = () => {
   const [revealed, setRevealed] = useState(false);
@@ -266,9 +286,9 @@ export default function App() {
       desc: "The central hub for our technology-driven ecosystem, focusing on agile delivery and client scaling.",
       longDesc: "Ewnet Solutions serves as the primary gateway for digital transformation. This platform integrates complex client requirements with streamlined development workflows, ensuring that every solution delivered is both technically sound and business-aligned.",
       link: "https://ewnetsolutions.netlify.app",
-      image: "/images/EwnetSolutionLogo.png",
-      modalImage: "/images/EwnetS1.png",
-      detailImages: ["/images/EwnetS2.png", "/images/EwnetS3.png"],
+      image: EwnetSolutionLogo,
+      modalImage: EwnetS1,
+      detailImages: [EwnetS2, EwnetS3],
       tech: ["Next.js", "Tailwind CSS", "Cloud Architecture", "CI/CD"],
       impactTitle: "Global Scalability",
       impactDesc: "Infrastructure engineered for high-availability and zero-downtime deployment cycles.",
@@ -279,9 +299,9 @@ export default function App() {
       type: "Strategic Services", 
       desc: "Professional business profiles and strategic proposals designed to secure partnerships.",
       longDesc: "We craft high-impact business documentation that communicates value clearly and persuasively. From comprehensive company profiles to detailed project proposals, our documents are designed to align with industry standards and help businesses secure critical opportunities.",
-      image: "/images/Bens.png",
-      modalImage: "/images/Bens.png",
-      detailImages: ["/images/Bensp.png", "/images/Telemedicine.png", "/images/Yesi.png"],
+      image: Bens,
+      modalImage: Bens,
+      detailImages: [Bensp, Telemedicine, Yesi],
       tech: ["Adobe InDesign", "Copywriting", "Strategic Planning", "Branding"],
       impactTitle: "Strategic Growth",
       impactDesc: "Facilitating partnerships through clear, professional communication.",
@@ -292,9 +312,9 @@ export default function App() {
       type: "Web Engineering", 
       desc: "Scalable digital platforms engineered for performance, accessibility, and long-term growth.",
       longDesc: "We don't just build websites; we build digital assets. By combining clean code with strategic design, we create fast, secure, and scalable web platforms that drive user engagement and business growth.",
-      image: "/images/Tech1.png",
-      modalImage: "/images/Tech1.png",
-      detailImages: ["/images/Tech2.png", "/images/Tech3.png", "/images/Tech4.png"],
+      image: Tech1,
+      modalImage: Tech1,
+      detailImages: [Tech2, Tech3, Tech4],
       tech: ["React", "Next.js", "Tailwind", "Node.js"],
       impactTitle: "Digital Impact",
       impactDesc: "Enhanced online visibility and user engagement through performance-first engineering.",
@@ -305,9 +325,9 @@ export default function App() {
       type: "Creative Design", 
       desc: "Compelling visual narratives and intuitive interfaces that elevate brand presence.",
       longDesc: "Design is the silent ambassador of your brand. We craft pixel-perfect user interfaces and comprehensive graphic assets—from logos to marketing collateral—that ensure your digital presence is not only functional but unforgettable.",
-      image: "/images/ui1.png",
-      modalImage: "/images/ui1.png",
-      detailImages: ["/images/ui2.png", "/images/Alemhabesha.png", "/images/3.png", "/images/4.png", "/images/cover.png", "/images/nova.png"],
+      image: ui1,
+      modalImage: ui1,
+      detailImages: [ui2, Alemhabesha, Img3, Img4, cover, nova],
       tech: ["Figma", "Photoshop", "Illustrator", "Brand Identity"],
       impactTitle: "Visual Impact",
       impactDesc: "Enhanced user engagement through consistent and accessible design systems.",
