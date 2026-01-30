@@ -24,25 +24,25 @@ import {
   Image as ImageIcon
 } from 'lucide-react';
 
-import EwnetSolutionLogo from '/Images/EwnetSolutionLogo.png';
-import EwnetS1 from '/Images/EwnetS1.png';
-import EwnetS2 from '/Images/EwnetS2.png';
-import EwnetS3 from '/Images/EwnetS3.png';
-import Bens from '/Images/Bens.png';
-import Bensp from '/Images/Bensp.png';
-import Telemedicine from '/Images/Telemedicine.png';
-import Yesi from '/Images/Yesi.png';
-import Tech1 from '/Images/Tech1.png';
-import Tech2 from '/Images/Tech2.png';
-import Tech3 from '/Images/Tech3.png';
-import Tech4 from '/Images/Tech4.png';
-import ui1 from '/Images/ui1.png';
-import ui2 from '/Images/ui2.png';
-import Alemhabesha from '/Images/Alemhabesha.png';
-import Img3 from '/Images/3.png';
-import Img4 from '/Images/4.png';
-import cover from '/Images/cover.png';
-import nova from '/Images/nova.png';
+const EwnetSolutionLogo = '/Images/EwnetSolutionLogo.png';
+const EwnetS1 = '/Images/EwnetS1.png';
+const EwnetS2 = '/Images/EwnetS2.png';
+const EwnetS3 = '/Images/EwnetS3.png';
+const Bens = '/Images/Bens.png';
+const Bensp = '/Images/Bensp.png';
+const Telemedicine = '/Images/Telemedicine.png';
+const Yesi = '/Images/Yesi.png';
+const Tech1 = '/Images/Tech1.png';
+const Tech2 = '/Images/Tech2.png';
+const Tech3 = '/Images/Tech3.png';
+const Tech4 = '/Images/Tech4.png';
+const ui1 = '/Images/ui1.png';
+const ui2 = '/Images/ui2.png';
+const Alemhabesha = '/Images/Alemhabesha.png';
+const Img3 = '/Images/3.png';
+const Img4 = '/Images/4.png';
+const cover = '/Images/cover.png';
+const nova = '/Images/nova.png';
 
 // --- Animation Hook ---
 const useScrollReveal = () => {
