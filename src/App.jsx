@@ -24,14 +24,14 @@ import {
   Image as ImageIcon
 } from 'lucide-react';
 
-import EwnetSolutionLogo from '../images/EwnetSolutionLogo.png';
-import EwnetS1 from '/images/EwnetS1.png';
-import EwnetS2 from '/images/EwnetS2.png';
-import EwnetS3 from '/images/EwnetS3.png';
-import Bens from '/images/Bens.png';
-import Bensp from '../images/Bensp.png';
-import Telemedicine from '../images/Telemedicine.png';
-import Yesi from '../images/Yesi.png';
+import EwnetSolutionLogo from '/Images/EwnetSolutionLogo.png';
+import EwnetS1 from '/Images/EwnetS1.png';
+import EwnetS2 from '/Images/EwnetS2.png';
+import EwnetS3 from '/Images/EwnetS3.png';
+import Bens from '/Images/Bens.png';
+import Bensp from '/Images/Bensp.png';
+import Telemedicine from '/Images/Telemedicine.png';
+import Yesi from '/Images/Yesi.png';
 import Tech1 from '../images/Tech1.png';
 import Tech2 from '../images/Tech2.png';
 import Tech3 from '../images/Tech3.png';
