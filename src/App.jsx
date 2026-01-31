@@ -31,7 +31,7 @@ import EwnetS3 from '/Images/EwnetS3.png';
 import Bens from '/Images/Bens.png';
 import Bensp from '/Images/BensP.png';
 import Telemedicine from '/Images/Telemedicine.png';
-import Yesi from '/Images/Yesi.png';
+import Yesi from '/Images/YesI.png';
 import Tech1 from '/Images/Tech1.png';
 import Tech2 from '/Images/Tech2.png';
 import Tech3 from '/Images/Tech3.png';
