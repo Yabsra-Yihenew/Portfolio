@@ -279,6 +279,17 @@ export default function App() {
 
   useEffect(() => setHeroRevealed(true), []);
 
+  useEffect(() => {
+    // Set browser tab icon
+    let link = document.querySelector("link[rel~='icon']");
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'icon';
+      document.head.appendChild(link);
+    }
+    link.href = EwnetSolutionLogo;
+  }, []);
+
   const projects = [
     { 
       name: "Ewnet Solutions", 
