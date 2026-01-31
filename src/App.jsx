@@ -36,13 +36,13 @@ import Tech1 from '/Images/Tech1.png';
 import Tech2 from '/Images/Tech2.png';
 import Tech3 from '/Images/Tech3.png';
 import Tech4 from '/Images/Tech4.png';
-import ui1 from '/Images/ui1.png';
-import ui2 from '/Images/ui2.png';
+import ui1 from '/Images/UI1.png';
+import ui2 from '/Images/UI2.png';
 import Alemhabesha from '/Images/Alemhabesha.png';
 import Img3 from '/Images/3.png';
 import Img4 from '/Images/4.png';
 import cover from '/Images/cover.png';
-import nova from '/Images/nova.png';
+import nova from '/Images/Nova.png';
 
 // --- Animation Hook ---
 const useScrollReveal = () => {
