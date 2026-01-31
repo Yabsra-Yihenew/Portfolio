@@ -32,6 +32,7 @@ import Bens from '/Images/Bens.png';
 import Bensp from '/Images/BensP.png';
 import Telemedicine from '/Images/Telemedicine.png';
 import Yesi from '/Images/YesI.png';
+import Y from '/Images/Y.png';
 import Tech1 from '/Images/Tech1.png';
 import Tech2 from '/Images/Tech2.png';
 import Tech3 from '/Images/Tech3.png';
@@ -287,7 +288,7 @@ export default function App() {
       link.rel = 'icon';
       document.head.appendChild(link);
     }
-    link.href = EwnetSolutionLogo;
+    link.href = Y;
   }, []);
 
   const projects = [
